@@ -1,7 +1,14 @@
 body {
-    background-image: url(../images/pokemon2.jpg); 
-    -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    font-family: 'Press Start 2P', cursive;
+    background: url(../images/pokemon3.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+    text-align: center;
+    font-size: 50px;
+}
+
+.displaybox {
+    margin: 100px 0 0 0;
 }
