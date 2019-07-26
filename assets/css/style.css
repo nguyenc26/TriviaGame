@@ -1,7 +1,6 @@
 body {
     background-image: url(../images/pokemon2.jpg); 
-    -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    width: 1000px;
+    height: 90%;
+
 }
