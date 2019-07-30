@@ -48,8 +48,22 @@ $(document).ready(function () {
     var wrongCount = 0;
     var unanswered = 0;
     var timer = 15;
-    
+    var intervalId;
 
+    //start game 
+    $("#startOver").hide();
+    //click start button to start game
+    //click start to play  
+    $("#start").on("click", function () {
+        //on click the button disappears
+        $("#start").hide();
+        //quiz shows up and timer starts
+        displayQuestion();
+        runTimer();
+        for (var i = 0; i < options.length; i++) {
+            holder.push(options[i]);
+        }
+    })
 
 
 
