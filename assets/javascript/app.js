@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var options = [
+    var qPool = [
         {
             question: "What's the most effective Poke ball in the game?",
             choice: ["Great Ball", "Ultra Ball", "Heal Ball", "Master Ball"],
@@ -38,10 +38,11 @@ $(document).ready(function () {
     var intervalId;
     var userGuess = "";
     var running = false;
-    var qCount = options.length;
+    var qCount = qPool.length;
     var pick;
     var index;
     var holder = [];
+    var questionsAsked = [];
 
 
     //start game 
@@ -54,8 +55,8 @@ $(document).ready(function () {
         //quiz shows up and timer starts
         runTimer();
         displayQuestion();
-        for (var i = 0; i < options.length; i++) {
-            holder.push(options[i]);
+        for (var i = 0; i < qPool.length; i++) {
+            holder.push(qPool[i]);
         }
     })
 
@@ -90,8 +91,12 @@ $(document).ready(function () {
     //display question and loop though and display possible answers
     function displayQuestion() {
         //generate random index in array
-        index = Math.floor(Math.random() * options.length);
-        pick = options[index];
+        index = Math.floor(Math.random() * qPool.length);
+        while (questionsAsked.indexOf(index) >= 0) {
+            index = Math.floor(Math.random() * qPool.length);
+        }
+        questionsAsked.push(index);
+        pick = qPool[index];
 
         //iterate through answer array and display
         $("#question").html("<h2>" + pick.question + "</h2>");
@@ -158,11 +163,12 @@ $(document).ready(function () {
 
     //starts over and starts another game.
     $("#startOver").on("click", function () {
+        questionsAsked = [];
         $("#startOver").hide();
         $("#answer").empty();
         $("#question").empty();
         for (var i = 0; i < holder.length; i++) {
-            options.push(holder[i]);
+            qPool.push(holder[i]);
         }
         runTimer();
         displayQuestion();
