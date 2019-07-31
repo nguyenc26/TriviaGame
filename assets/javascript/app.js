@@ -59,16 +59,12 @@ $(document).ready(function () {
             holder.push(qPool[i]);
         }
     })
-
-    //timer start
     function runTimer() {
         if (!running) {
             intervalId = setInterval(decrement, 1000);
             running = true;
         }
     }
-
-    //timer countdown
     function decrement() {
         $("#timer").html("<h3>Time remaining: " + timer + "</h3>");
         timer--;
